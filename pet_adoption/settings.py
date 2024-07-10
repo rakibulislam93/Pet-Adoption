@@ -29,7 +29,11 @@ SECRET_KEY = 'django-insecure-wef7($50vhls8#!b*ekg5^wggp4c=92syu94emun&!cn@yu=h)
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://smart-pet-adoption.onrender.com',
+    
+    'https://*127.0.0.1'
+]
 
 # Application definition
 
@@ -61,6 +65,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pet_adoption.urls'
+
+
 
 TEMPLATES = [
     {
