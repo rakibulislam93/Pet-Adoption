@@ -34,7 +34,7 @@ CSRF_TRUSTED_ORIGINS = [
     
     'https://*127.0.0.1'
 ]
-
+LOGIN_URL = "http://127.0.0.1:5500/Fontend/login.html"
 # Application definition
 
 INSTALLED_APPS = [

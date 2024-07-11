@@ -10,6 +10,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from rest_framework.authtoken.models import Token
+from rest_framework import viewsets
+from . import models
 # Create your views here.
 
 class RegistrationApiView(APIView):
@@ -25,7 +27,7 @@ class RegistrationApiView(APIView):
             
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             print(uid)
-            confirm_link = f"http://127.0.0.1:8000/accounts/active/{uid}/{token}"
+            confirm_link = f"https://smart-pet-adoption.onrender.com/accounts/active/{uid}/{token}"
             subject = "Confirm Your Email"
             message = render_to_string('registration_mail.html',{
                 'confirm_link':confirm_link,
@@ -82,3 +84,8 @@ class LogoutApiView(APIView):
         logout(request)
 
         return redirect('login')
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = models.Profile.objects.all() 
+    serializer_class = serializers.ProfileSerializer
+    
